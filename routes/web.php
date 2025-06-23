@@ -30,4 +30,11 @@ Route::post('/login', [LoginController::class, 'doLogin'])->name('auth.doLogin')
 Route::get('/register', [RegistrationController::class, 'showForm'])->name('auth.registerForm');
 Route::post('/register', [RegistrationController::class, 'registerSave'])->name('auth.register');
 
-Route::get('/forgetpassword', [ForgotPasswordController::class,'forgetpassword'])->name('auth.forgetpassword');
+Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
+Route::get('/caregiver/profile', [ProfileController::class, 'index'])->name('caregiver.profile');
+
+Route::get('/forgotpassword', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('auth.forgotpassword');
+Route::post('/forgotpassword', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('auth.forgotpassword.submit');
+
+Route::get('/resetpassword/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('auth.resetpassword');
+Route::post('/resetpassword', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('auth.resetpassword.submit');
