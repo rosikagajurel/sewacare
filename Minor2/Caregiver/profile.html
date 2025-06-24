@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
+  <title>Caregiver Profile - SewaCare</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+
+  <div class="container py-5">
+    <a href="caregiver.html" class="btn btn-outline-info mb-4">← Back to Dashboard</a>
+
+    <div id="successMsg" class="alert alert-success d-none" role="alert">Profile updated successfully!</div>
+
+    <div class="card shadow-sm p-4">
+      <form id="profileForm" onsubmit="return saveProfile()">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h3 class="text-info">My Profile</h3>
+          <button type="button" class="btn btn-sm btn-info text-white" onclick="enableEdit()">Edit Profile</button>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="name" value="Sita Rai" disabled>
+        </div>
+
+
+        <div class="mb-3">
+          <label class="form-label">Caregiver Type</label>
+          <input type="text" class="form-control" id="type" value="Home Nurse" disabled>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Experience</label>
+          <input type="text" class="form-control" id="experience" value="4 years" disabled>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Qualification</label>
+          <input type="text" class="form-control" id="qualification" value="B.Sc. Nursing" disabled>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Availability</label>
+          <select class="form-select" id="availability" disabled>
+            <option selected>Available</option>
+            <option>Unavailable</option>
+          </select>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-success d-none mt-3" id="saveBtn">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function enableEdit() {
+      document.getElementById("name").disabled = false;
+      document.getElementById("type").disabled = false;
+      document.getElementById("experience").disabled = false;
+      document.getElementById("qualification").disabled = false;
+      document.getElementById("availability").disabled = false;
+
+      document.getElementById("saveBtn").classList.remove("d-none");
+
+      document.getElementById("successMsg").classList.add("d-none");
+    }
+
+    function saveProfile() {
+      document.getElementById("successMsg").classList.remove("d-none");
+
+
+      document.getElementById("name").disabled = true;
+      document.getElementById("type").disabled = true;
+      document.getElementById("experience").disabled = true;
+      document.getElementById("qualification").disabled = true;
+      document.getElementById("availability").disabled = true;
+      document.getElementById("saveBtn").classList.add("d-none");
+
+      return false;
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
