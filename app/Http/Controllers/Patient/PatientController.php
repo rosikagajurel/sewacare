@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Patient;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PatientController extends Controller
 {
-    //
+    public function dashboard()
+    {
+        $user = Auth::user();
+        return view('Patient.dashboard', compact('user'));
+    }
 }

@@ -35,20 +35,37 @@
     <h4 class="text-center mb-3 text-info fw-semibold">Reset Your Password</h4>
     <p class="text-center text-muted mb-4">Enter your email to receive reset link</p> 
 
-  <div class="form-floating mb-3">
+  <form method="POST" action="{{ route('forgot.password.post') }}">
+              @csrf
+
+              @if (Session::has('message'))
+                   <div class="alert alert-success" role="alert">
+                      {{ Session::get('message') }}
+                  </div>
+              @endif
+
+              @error('email')
+                  <div class="alert alert-danger" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </div>
+              @enderror
+
+
+
+    <div class="form-floating mb-3">
     <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
     <label for="email">Email address</label>
   </div>
 
   <button type="submit" class="btn btn-info w-100 rounded-pill">Send Reset Link</button>
-</form>
+
 
       <div class="form-floating mb-3">
         <input type="number" class="form-control" id="number" placeholder="number" required>
         <label for="number">Enter PIN</label>
       </div>
 
-      <button type="submit" class="btn btn-info w-100 rounded-pill">Reset </button>
+      <button type="submit" class="btn btn-primary btn-lg">Reset </button>
     </form>
 
     <p class="mt-3 text-center small">
