@@ -1,4 +1,4 @@
-<!-- caregiver/dashboard.blade.php -->Add commentMore actions
+<!-- caregiver/dashboard.blade.php -->
 @extends('admin.layouts.app')
 
 @section('content')

@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Patient;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
-    public function dashboard()
+
+
+    public function index()
     {
-        $user = Auth::user();
-        return view('Patient.dashboard', compact('user'));
+        // Logic for the admin dashboard can be added here
+        return view('patient.dashboard');
     }
 }
