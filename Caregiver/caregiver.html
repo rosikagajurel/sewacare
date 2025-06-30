@@ -33,23 +33,28 @@
     .card-box {
       border-left: 5px solid #0dcaf0;
     }
+    .logo-img {
+          max-height: 50px;
+    }
   </style>
 </head>
 <body>
-  <div class="container-fluid">
+<div class="container-fluid">
     <div class="row">
-
-      <div class="col-md-3 col-lg-2 sidebar p-3">
-        <h4 class="text-info mb-4">SewaCare</h4>
-        <nav class="nav flex-column">
-          <a class="nav-link" href="caregiver.html">Dashboard</a>
-          <a class="nav-link" href="booking.html">My Bookings</a>
-          <a class="nav-link" href="tasklog.html">Update Tasks</a>
-          <a class="nav-link" href="profile.html">My Profile</a>
-          <a class="nav-link text-danger" href="logout.html">Logout</a>
-        </nav>
+    <div class="col-lg-2 col-md-3 sidebar p-3">
+      <div class="text-left mb-4">
+        <a href="caregiver.html">
+          <img src="../Images/logo.png" alt="SewaCare Logo" class="img-fluid logo-img">
+        </a>
       </div>
-
+      <nav class="nav flex-column">
+        <a class="nav-link" href="caregiver.html">Dashboard</a>
+        <a class="nav-link" href="booking.html">My Bookings</a>
+        <a class="nav-link" href="tasklog.html">Update Tasks</a>
+        <a class="nav-link" href="profile.html">My Profile</a>
+        <a class="nav-link text-danger" href="logout.html">Logout</a>
+      </nav>
+    </div>
       <div class="col-md-9 col-lg-10 p-4">
         <h2 class="mb-4">Welcome, Caregiver!</h2>
 
