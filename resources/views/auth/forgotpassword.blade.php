@@ -35,7 +35,7 @@
     <h4 class="text-center mb-3 text-info fw-semibold">Reset Your Password</h4>
     <p class="text-center text-muted mb-4">Enter your email to receive reset link</p> 
 
-  <form method="POST" action="{{ route('forgot.password.post') }}">
+  <form method="POST" action="{{ route('auth.forgotpassword.post') }}">
               @csrf
 
               @if (Session::has('message'))

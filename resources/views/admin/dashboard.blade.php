@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('admin.layouts.app')Add commentMore actions
 
 @section('content')
     <section class="content-header">
@@ -15,5 +15,4 @@
           </div>
         </div>
       </div><!-- /.container-fluid -->
-    </section>
-@endsection
+    </section

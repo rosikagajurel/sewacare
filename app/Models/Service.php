@@ -7,15 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     protected $fillable = [
-        'name',
-        'slug',
-        'details',
-        'base_price',
-        'service_type',
+        'patient_id', 'caregiver_id', 'description', 'status'
     ];
-
-    public function requests()
-    {
-        return $this->hasMany(ServiceRequest::class);
-    }
 }

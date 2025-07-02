@@ -41,10 +41,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    public function caregiver()
-{
-    return $this->hasOne(Caregiver::class, 'user_id');
-}
-
 }
