@@ -35,7 +35,7 @@ class LoginController extends Controller
         } else {
             // Fallback if role is not matched
             Auth::logout();
-            return redirect()->route('auth.login')->with('error', 'Unauthorized role.');
+            return redirect()->route('login')->with('error', 'Unauthorized role.');
         }
     }
 
