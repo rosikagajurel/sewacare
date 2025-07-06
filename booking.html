@@ -26,86 +26,78 @@
       color: #0dcaf0;
     }
     .main-content {
-      padding: 20px 20px;
+      padding: 20px;
     }
-    .card {
+    .card-accent {
       border-left: 4px solid #0dcaf0;
+    }
+    .logo-img {
+      max-height: 50px;
     }
   </style>
 </head>
 <body>
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3 col-lg-2 sidebar p-3">
-      <h4 class="text-info mb-4">SewaCare</h4>
+      <div class="text-left mb-4">
+        <a href="user-dashboard.html">
+          <img src="../Images/logo.png" alt="SewaCare Logo" class="img-fluid logo-img">
+        </a>
+      </div>
       <nav class="nav flex-column">
-        <a class="nav-link" href="#">Dashboard</a>
-        <a class="nav-link" href="#">My Appointments</a>
-        <a class="nav-link active" href="booking.html">Booking</a>
-        <a class="nav-link" href="#">My Profile</a>
+        <a class="nav-link" href="User/user.html">Dashboard</a>
+        <a class="nav-link" href="User/appointments.html">My Appointments</a>
+        <a class="nav-link" href="booking.html">Booking</a>
+        <a class="nav-link" href="User/userprofile.html">My Profile</a>
         <a class="nav-link" href="#">Services</a>
         <a class="nav-link text-danger" href="#">Logout</a>
       </nav>
     </div>
 
+    <div class="col-md-10 col-lg-9 main-content">
+      <div class="card shadow-sm card-accent mb-4">
+        <div class="card-body">
+          <h3 class="text-info fw-semibold mb-2">Book a Home Visit</h3>
+          <p class="text-muted mb-3">We bring quality healthcare right to your doorstep. Fill the form below to get started.</p>
 
-    <div class="col-md-9 col-lg-10 main-content">
-      <div class="text-center mb-3">
-        <h2 class="text-info fw-bold">Book a Home Visit</h2>
-        <p class="text-muted mb-0">We bring quality healthcare right to your doorstep. Fill the form below to get started.</p>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-          <div class="card shadow border-0">
-            <div class="card-body p-4">
-
-              <form class="row g-3">
-                <div class="col-12">
-                  <label for="serviceType" class="form-label">Select Service</label>
-                  <select class="form-select" id="serviceType" required>
-                    <option disabled selected value="">Choose service</option>
-                    <option>Home Nursing</option>
-                    <option>Physiotherapy</option>
-                    <option>Lab Test</option>
-                  </select>
-                </div>
-
-                <div class="col-12">
-                  <label for="name" class="form-label">Full Name</label>
-                  <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
-                </div>
-
-                <div class="col-12">
-                  <label for="location" class="form-label">Location</label>
-                  <input type="text" id="location" class="form-control" placeholder="Enter your address" required>
-                </div>
-
-                <div class="col-md-6">
-                  <label for="date" class="form-label">Preferred Date</label>
-                  <input type="date" id="date" class="form-control" required>
-                </div>
-
-                <div class="col-md-6">
-                  <label for="time" class="form-label">Preferred Time</label>
-                  <input type="time" id="time" class="form-control" required>
-                </div>
-
-                <div class="col-12">
-                  <button type="submit" class="btn btn-info w-100 fw-semibold text-white">
-                    Confirm Booking
-                  </button>
-                </div>
-              </form>
+          <form class="row g-3">
+            <div class="col-12">
+              <label for="serviceType" class="form-label">Select Service</label>
+              <select class="form-select" id="serviceType" required>
+                <option disabled selected value="">Choose service</option>
+                <option>Home Nursing</option>
+                <option>Physiotherapy</option>
+                <option>Lab Test</option>
+              </select>
             </div>
-          </div>
+            <div class="col-12">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+            <div class="col-12">
+              <label for="location" class="form-label">Location</label>
+              <input type="text" id="location" class="form-control" placeholder="Enter your address" required>
+            </div>
+            <div class="col-md-6">
+              <label for="date" class="form-label">Preferred Date</label>
+              <input type="date" id="date" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label for="time" class="form-label">Preferred Time</label>
+              <input type="time" id="time" class="form-control" required>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-info w-100 fw-semibold text-white">
+                Confirm Booking
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-
     </div>
   </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

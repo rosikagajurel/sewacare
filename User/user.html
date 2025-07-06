@@ -40,6 +40,9 @@
       padding: 1.5rem;
       border-radius: 10px;
     }
+    .logo-img {
+      max-height: 50px;
+    }
   </style>
 </head>
 <body>
@@ -47,14 +50,18 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3 col-lg-2 sidebar p-3">
-        <h4 class="text-info mb-4">SewaCare</h4>
+        <div class="text-left mb-4">
+        <a href="user-dashboard.html">
+          <img src="../Images/logo.png" alt="SewaCare Logo" class="img-fluid logo-img">
+        </a>
+      </div>
         <nav class="nav flex-column">
-          <a class="nav-link" href="#">Dashboard</a>
-          <a class="nav-link" href="#">My Appointments</a>
-          <a class="nav-link" href="#">Booking</a>
-          <a class="nav-link" href="#">My Profile</a>
+          <a class="nav-link" href="user.html">Dashboard</a>
+          <a class="nav-link" href="appointments.html">My Appointments</a>
+          <a class="nav-link" href="../booking.html">Booking</a>
+          <a class="nav-link" href="userprofile.html">My Profile</a>
           <a class="nav-link" href="#">Services</a>
-          <a class="nav-link text-danger" href="logout.html">Logout</a>
+          <a class="nav-link text-danger" href="#">Logout</a>
         </nav>
       </div>
       <div class="col-md-9 col-lg-10 p-4">
@@ -83,43 +90,6 @@
             </div>
           </div>
         </div>
-          <section class="py-5" id="services">
-    <div class="container">
-      <h2 class="text-center fw-bold mb-5">Our Core Services</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100 text-center shadow-sm border-0 service-card">
-            <div class="card-body">
-              <img src="../Images/HomeNursing.jpeg" alt="Home Nursing" class="service-img mb-3">
-              <h5 class="fw-semibold">Home Nursing</h5>
-              <p class="text-muted">Expert nurses for elderly, chronic care, and post-surgery recovery.</p>
-              <a href="#book" class="btn btn-outline-info btn-sm mt-2">Book Now</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 text-center shadow-sm border-0 service-card">
-            <div class="card-body">
-              <img src="../Images/Physiotherapy.jpeg" alt="Physiotherapy" class="service-img mb-3">
-              <h5 class="fw-semibold">Physiotherapy</h5>
-              <p class="text-muted">Therapy sessions for mobility, recovery, and home-based exercises.</p>
-              <a href="#book" class="btn btn-outline-info btn-sm mt-2">Book Now</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 text-center shadow-sm border-0 service-card">
-            <div class="card-body">
-              <img src="../Images/LabTest.jpeg" alt="Lab Tests" class="service-img mb-3">
-              <h5 class="fw-semibold">Lab Tests</h5>
-              <p class="text-muted">Home sample collection and fast digital reports within 24 hours.</p>
-              <a href="#book" class="btn btn-outline-info btn-sm mt-2">Book Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
         <h5 class="mb-3">Recent Appointments</h5>
         <table class="table table-hover">
           <thead class="table-light">

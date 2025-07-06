@@ -91,5 +91,13 @@ body {
   background: url("../Images/background.jpeg") no-repeat center center fixed !important;
   background-size: cover !important;
 }
+.chatbox {
+  width: 320px;
+  max-height: 350px;
+  z-index: 1055;
+}
 
+#chatBody {
+  height: 220px;
+}
 
