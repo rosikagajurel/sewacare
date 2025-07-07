@@ -1,0 +1,45 @@
+<style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .sidebar {
+      background-color: white;
+      height: 100vh;
+      border-right: 1px solid #dee2e6;
+    }
+
+    .sidebar .nav-link {
+      color: #333;
+      padding: 12px;
+    }
+
+    .sidebar .nav-link:hover,
+    .sidebar .nav-link.active {
+      background-color: #e9f7fc;
+      color: #0dcaf0;
+    }
+    .card {
+      border-left: 5px solid #0dcaf0;
+    }
+    
+    .logo-img {
+          max-height: 50px;
+    }
+  </style>
+ <div class="col-md-3 col-lg-2 sidebar p-3">
+      <div class="mb-4 text-start">
+        <a href="caregiver.html">
+          <img src="../Images/logo.png" alt="SewaCare Logo" class="img-fluid logo-img">
+        </a>
+      </div>
+      <nav class="nav flex-column">
+        <a class="nav-link" href="caregiver.html">Dashboard</a>
+        <a class="nav-link" href="booking.html">My Bookings</a>
+        <a class="nav-link" href="ShiftTime.html">My Schedule</a>
+        <a class="nav-link" href="Services.html">My Services</a>
+        <a class="nav-link" href="profile.html">My Profile</a>
+        <a class="nav-link text-danger" href="#">Logout</a>
+      </nav>
+    </div>

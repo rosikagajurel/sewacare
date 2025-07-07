@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caregiver Availability - SewaCare</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .card {
+      border-left: 5px solid #0dcaf0;
+    }
+
+    .form-control {
+      border-radius: 0.5rem;
+    }
+
+    .card-body {
+      background-color: white;
+      padding: 30px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .btn-check:checked + .btn-outline-info {
+      background-color: #0dcaf0;
+      color: white;
+    }
+    
+    .btn-outline-info {
+      width: 100%;
+    }
+
+    .btn-group {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row ">
+    <div class="col-md-9 col-lg-10 main-content">
+      <div class="card shadow-sm mb-4 mt-4">
+        <div class="card-body p-4">
+          <h3 class="text-center text-dark fw-bold mb-4">My Available Shift and Time</h3>
+          <form>
+            <div class="mb-3">
+              <label class="form-label d-block">Preferred Shift</label>
+              <div class="btn-group w-100" role="group">
+                <input type="radio" class="btn-check" name="shift" id="shiftDay" value="Day" required>
+                <label class="btn btn-outline-info" for="shiftDay">Day Shift</label>
+
+                <input type="radio" class="btn-check" name="shift" id="shiftNight" value="Night" required>
+                <label class="btn btn-outline-info" for="shiftNight">Night Shift</label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="timeSlot" class="form-label">Available Time</label>
+              <select id="timeSlot" class="form-select" required>
+                <option value="" disabled selected>Select a time slot</option>
+                <optgroup label="Morning">
+                  <option>6:00 AM - 8:00 AM</option>
+                  <option>8:00 AM - 10:00 AM</option>
+                </optgroup>
+                <optgroup label="Afternoon">
+                  <option>12:00 PM - 2:00 PM</option>
+                  <option>2:00 PM - 4:00 PM</option>
+                </optgroup>
+                <optgroup label="Evening">
+                  <option>4:00 PM - 6:00 PM</option>
+                  <option>6:00 PM - 8:00 PM</option>
+                </optgroup>
+                <optgroup label="Night">
+                  <option>8:00 PM - 10:00 PM</option>
+                  <option>10:00 PM - 12:00 AM</option>
+                </optgroup>
+              </select>
+            </div>
+
+
+            <div class="mb-3">
+              <label for="days" class="form-label">Available Days</label>
+              <select id="days" class="form-select" required>
+                <option value="" disabled selected>Select Days</option>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+                <option>Sunday</option>
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label for="date" class="form-label">Available Date</label>
+              <input type="date" id="date" class="form-control" required>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-info fw-semibold text-white">Submit Availability</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

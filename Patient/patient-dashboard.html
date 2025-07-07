@@ -7,25 +7,9 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="CSS/style.css">
   <style>
-    .sidebar {
-      height: 100vh;
-      background-color: white;
-      border-right: 1px solid #dee2e6;
-    }
-
-    .sidebar .nav-link {
-      color: #333;
-      padding: 12px;
-    }
-
-    .sidebar .nav-link:hover,
-    .sidebar .nav-link.active {
-      background-color: #e9f7fc;
-      color: #0dcaf0;
-    }
-
     .summary-card {
       border-left: 5px solid #0dcaf0;
       transition: transform 0.2s ease;
@@ -40,30 +24,11 @@
       padding: 1.5rem;
       border-radius: 10px;
     }
-    .logo-img {
-      max-height: 50px;
-    }
   </style>
 </head>
 <body>
-
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3 col-lg-2 sidebar p-3">
-        <div class="text-left mb-4">
-        <a href="user-dashboard.html">
-          <img src="../Images/logo.png" alt="SewaCare Logo" class="img-fluid logo-img">
-        </a>
-      </div>
-        <nav class="nav flex-column">
-          <a class="nav-link" href="user.html">Dashboard</a>
-          <a class="nav-link" href="appointments.html">My Appointments</a>
-          <a class="nav-link" href="../booking.html">Booking</a>
-          <a class="nav-link" href="userprofile.html">My Profile</a>
-          <a class="nav-link" href="#">Services</a>
-          <a class="nav-link text-danger" href="#">Logout</a>
-        </nav>
-      </div>
+  <div class="row min-vh-100">
       <div class="col-md-9 col-lg-10 p-4">
         <div class="welcome-card mb-4">
           <h3 class="mb-1 text-info fw-semibold">Welcome back, Sita Ram</h3>
@@ -119,7 +84,6 @@
 
     </div>
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

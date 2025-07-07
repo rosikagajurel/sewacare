@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Service Details - SewaCare</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .main-content {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-md-9 col-lg-10 p-4">
+        <h3 class="fw-semibold text-info mb-3 mt-4">My Invoices</h3>
+        <p class="text-muted">View and download your past payment records.</p>
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body">
+            <h6 class="mb-0">You have <strong>2 unpaid invoices</strong> and <strong>4 paid</strong> records.</h6>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Invoice #</th>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Caregiver</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>INV001</td>
+                <td>Home Nursing</td>
+                <td>2025-07-01</td>
+                <td>Rita Thapa</td>
+                <td>Rs. 1,500</td>
+                <td><span class="badge bg-success">Paid</span></td>
+                <td><a href="#" class="btn btn-sm btn-outline-secondary">Download</a></td>
+              </tr>
+              <tr>
+                <td>INV002</td>
+                <td>Physiotherapy</td>
+                <td>2025-07-03</td>
+                <td>Sunil Gurung</td>
+                <td>Rs. 1,200</td>
+                <td><span class="badge bg-warning text-dark">Unpaid</span></td>
+                <td><a href="#" class="btn btn-sm btn-outline-info">Pay Now</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
