@@ -35,7 +35,6 @@
     <h3 class="text-center text-info fw-semibold mb-3">Create Your Account</h3>
     <p class="text-center text-muted mb-4">Join SewaCare for in-home medical support</p>
 
-    <!-- 🔗 Correct form action and method -->
     <form action="{{ route('auth.register') }}" method="POST">
       @csrf
 
@@ -76,7 +75,6 @@
       <a href="{{ route('auth.login') }}" class="text-info fw-bold text-decoration-none">Login</a>
     </p>
 
-    <!-- Show validation errors -->
     @if($errors->any())
       <div class="alert alert-danger mt-3">
         <ul class="mb-0">

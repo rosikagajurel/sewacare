@@ -14,7 +14,7 @@
 <body>
     <div class="d-flex">
         <!-- Sidebar -->
-        @include('admin.layouts.sidebar')
+        @include('caregiver.layouts.sidebar')
 
         <!-- Main Content -->
         <div class="flex-grow-1 p-4" style="width: 100%;">

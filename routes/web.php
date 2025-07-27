@@ -1,15 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GeminiController;
+use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Patient\PatientController;
-use App\Http\Controllers\Caregiver\CaregiverBookingController;
 use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\Caregiver\ProfileController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Caregiver\CaregiverController;
+use App\Http\Controllers\Caregiver\ShiftTimeController;
 use App\Http\Controllers\Caregiver\ServiceRequestController;
+use App\Http\Controllers\Caregiver\CaregiverBookingController;
 
 Route::get('/Caregiver/dashboard', [CaregiverController::class, 'index'])->name('caregiver.dashboard');
 Route::get('/Patient/dashboard', [PatientController::class, 'index'])->name('patient.dashboard');
@@ -31,15 +34,38 @@ Route::post('/register', [RegistrationController::class, 'registerSave'])->name(
 Route::get('/forgetpassword', [ForgotPasswordController::class,'forgetpassword'])->name('auth.forgetpassword');
 
 
+
 Route::get('/service-requests', [ServiceRequestController::class, 'serviceRequest'])->name('Caregiver.serviceRequest');
-
-
 Route::post('/service-requests/{id}/accept', [ServiceRequestController::class, 'acceptBasePrice'])->name('caregiver.acceptBasePrice');
-
-
 Route::post('/service-requests/bid', [ServiceRequestController::class, 'placeBid'])->name('caregiver.placeBid');
+
 
 Route::get('/bookings', [CaregiverBookingController::class, 'index'])->name('caregiver.bookings');
 Route::post('/bookings/{bookingId}/complete', [CaregiverBookingController::class, 'markCompleted'])->name('caregiver.bookings.complete');
 
 
+
+
+
+
+Route::get('/', function () {
+    return view('index');
+})->name('index');
+
+Route::get('/patient/service', function () {
+    return view('patient.service');
+})->name('patient.service');
+
+Route::get('/patient/booking', function () {
+    return view('patient.booking');
+})->name('patient.booking');
+
+
+
+Route::post('/chatbot/message', [GeminiController::class, 'chat'])->name('chatbot.message');
+Route::post('/chat/send', [ChatbotController::class, 'sendMessage'])->name('chat.send');
+
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/caregiver/shift-time', [ShiftTimeController::class, 'index'])->name('Caregiver.shiftTime');
