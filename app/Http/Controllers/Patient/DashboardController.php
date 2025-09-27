@@ -3,10 +3,12 @@ namespace App\Http\Controllers\Patient;
 
 use App\Http\Controllers\Controller;
 
-class DashboardController extends Controller
+class PatientController extends Controller
 {
     public function index()
     {
-        return view('Patient.dashboard');
+        // Make sure the view path matches the folder structure
+        return view('patient.dashboard'); // lowercase folder 'patient'
     }
 }
+

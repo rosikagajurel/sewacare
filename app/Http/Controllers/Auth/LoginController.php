@@ -15,14 +15,38 @@ class LoginController extends Controller
 
     public function doLogin(Request $request)
     {
-        // return $request->all();
         $request->validate([
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
-   
+
         $credentials = $request->only('email', 'password');
-        $user = Auth::attempt($credentials);
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            if ($user->role === 'caregiver') {
+                return redirect()->route('caregiver.dashboard');
+            } elseif ($user->role === 'patient') {
+                return redirect()->route('patient.dashboard');
+            } elseif ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            } else {
+                Auth::logout();
+                return redirect()->route('auth.login')->with('error', 'Unauthorized role.');
+            }
+        }
+
+        return redirect()->back()->with('error', 'Invalid credentials.');
+    }
+
+    // ✅ Add this logout method
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('auth.login');
     }
 }
-

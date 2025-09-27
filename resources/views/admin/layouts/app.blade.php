@@ -1,4 +1,5 @@
-<!DOCTYPE html>Add commentMore actions
+
+<!DOCTYPE html>
 <html lang="en">
 @include('admin.layouts.header')
     <!-- Site wrapper -->
