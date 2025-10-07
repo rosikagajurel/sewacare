@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('scheduled_date');
             $table->enum('status',['scheduled','completed','cancelled']);
             $table->text('report');
-            $table->foreignId('patients_id')->constrained()->onDelete('cascade');
+            $table->foreignId('users_id')->constrained()->onDelete('cascade');
 
         });
     }

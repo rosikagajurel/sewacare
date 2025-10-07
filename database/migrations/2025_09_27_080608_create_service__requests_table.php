@@ -10,15 +10,15 @@ return new class extends Migration
     {
         Schema::create('service_requests', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('patient_id'); // FK to users table
-            $table->unsignedBigInteger('service_id'); // FK to services table
+            $table->unsignedBigInteger('patients_id'); // FK to users table
+            $table->unsignedBigInteger('services_id'); // FK to services table
             $table->string('location');
             $table->dateTime('preferred_time');
             $table->text('description')->nullable();
             $table->enum('status', ['pending', 'accepted', 'completed'])->default('pending');
             $table->timestamps();
-            $table->foreign('patient_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
+            $table->foreign('patients_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('services_id')->references('id')->on('services')->onDelete('cascade');
         });
     }
 

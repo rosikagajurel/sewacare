@@ -22,10 +22,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
 });
 
-
-Route::get('/Caregiver/dashboard', [CaregiverController::class, 'index'])->name('caregiver.dashboard');
-Route::get('/patient/dashboard', [PatientController::class, 'index'])->name('patient.dashboard');
-
+Route::prefix('patient')->name('patient.')->group(function () {
+    Route::get('/dashboard', [PatientController::class, 'index'])->name('dashboard');
+    Route::get('/bookings', [PatientController::class, 'bookings'])->name('bookings');
+    Route::post('/booking/store', [PatientController::class, 'storeBooking'])->name('storeBooking');
+    Route::get('/appointments', [PatientController::class, 'appointments'])->name('appointments');
+    Route::get('/services', [PatientController::class, 'services'])->name('services');
+    Route::get('/lab-reports', [PatientController::class, 'labReports'])->name('labreports');
+    Route::get('/invoice', [PatientController::class, 'invoice'])->name('invoice');
+    Route::get('/profile', [PatientController::class, 'profile'])->name('profile');
+    Route::post('/update-profile', [PatientController::class, 'updateProfile'])->name('updateProfile');
+});
 
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
