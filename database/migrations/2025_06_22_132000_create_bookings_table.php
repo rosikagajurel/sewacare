@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->enum('payment_status', ['pending', 'paid', 'failed'])->default('pending');
-
+            $table->timestamps();
 
             $table->foreignId('patients_id')->constrained()->onDelete('cascade');
             $table->foreignId('caregivers_id')->constrained()->onDelete('cascade');

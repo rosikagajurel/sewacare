@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('caregiver.layouts.app')
 
 @section('content')
 <div class="container mt-4">
@@ -22,6 +22,7 @@
                 <h5 class="card-title">{{ $serviceRequest->service->name }}</h5>
                 <p><strong>Service Type:</strong> {{ ucfirst($serviceRequest->service->service_type) }}</p>
                 <p><strong>Patient Name:</strong> {{ $serviceRequest->patient->name }}</p>
+                <p><strong>Shift Type:</strong> {{ ucfirst($serviceRequest->shift_type) }}</p>
                 <p><strong>Location:</strong> {{ $serviceRequest->location }}</p>
                 <p><strong>Preferred Time:</strong> {{ \Carbon\Carbon::parse($serviceRequest->preferred_time)->format('d M Y, h:i A') }}</p>
                 <p><strong>Description:</strong> {{ $serviceRequest->description }}</p>

@@ -1,31 +1,21 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace App\Models;
 
-return new class extends Migration
+use Illuminate\Database\Eloquent\Model;
+
+class Patient extends Model
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
-    {
-        Schema::create('patients', function (Blueprint $table) {
-            $table->id();
-            $table->text('medical_history');
-            $table->text('prescriptions');
-            $table->text('health_condition');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+    public $timestamps = false; 
+    protected $fillable = [
+        'user_id',
+        'medical_history',
+        'prescriptions',
+        'health_condition'
+    ];
 
-        });
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function user()
     {
-        Schema::dropIfExists('patients');
+        return $this->belongsTo(User::class, 'user_id');
     }
-};
+}

@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('patient.layouts.app')
 
 @section('content')
     <h1>Patient Dashboard</h1>

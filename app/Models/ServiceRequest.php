@@ -2,20 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\User;
-
-use App\Models\Service;
 use Illuminate\Database\Eloquent\Model;
 
 class ServiceRequest extends Model
 {
     protected $fillable = [
-        'patient_id',
-        'service_id',
-        'location',
-        'preferred_time',
-        'description',
-        'status',
+        'patient_id', 'service_id', 'location', 'preferred_time',
+        'description', 'status', 'shift_type'
     ];
 
     public function patient()
@@ -25,6 +18,6 @@ class ServiceRequest extends Model
 
     public function service()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo(Service::class, 'service_id');
     }
 }
