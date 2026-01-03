@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('field')->nullable();
             $table->text('bio')->nullable();
 
-            $table->foreignId('user_id')->constrained()->on('users')->onDelete('cascade');
+            $table->foreignId('users_id')->constrained()->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
