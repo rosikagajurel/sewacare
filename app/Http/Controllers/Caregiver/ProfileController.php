@@ -41,9 +41,10 @@ class ProfileController extends Controller
             'bio' => 'nullable|string',
             'qualification' => 'nullable|string|max:255',
             'experience' => 'nullable|string|max:255',
-            'caregiver_type' => 'nullable|in:medical,regular',
+            'caregiver_type' => 'nullable|in:medical,regular,home_nurse',
             'availability_status' => 'nullable|boolean',
             'certificate' => 'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+            'profile_photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         // Update user info
@@ -52,7 +53,7 @@ class ProfileController extends Controller
         $user->contact_number = $request->contact_number;
         $user->save();
 
-        // Update caregiver profile
+        // Update caregiver info
         $caregiver = Caregiver::firstOrNew(['user_id' => $user->id]);
         $caregiver->contact_number = $request->contact_number;
         $caregiver->address = $request->address;
@@ -64,18 +65,51 @@ class ProfileController extends Controller
         $caregiver->caregiver_type = $request->caregiver_type;
         $caregiver->availability_status = $request->has('availability_status') ? 1 : 0;
 
+        // Handle certificate upload
         if ($request->hasFile('certificate')) {
             if ($caregiver->certificate_path) {
                 Storage::disk('public')->delete($caregiver->certificate_path);
             }
-
             $filename = Str::uuid() . '.' . $request->file('certificate')->getClientOriginalExtension();
             $path = $request->file('certificate')->storeAs('certificates', $filename, 'public');
             $caregiver->certificate_path = $path;
+        }
+
+        // Handle profile photo upload
+        if ($request->hasFile('profile_photo')) {
+            if ($caregiver->profile_photo_path) {
+                Storage::disk('public')->delete($caregiver->profile_photo_path);
+            }
+            $photoName = Str::uuid() . '.' . $request->file('profile_photo')->getClientOriginalExtension();
+            $photoPath = $request->file('profile_photo')->storeAs('profile_photos', $photoName, 'public');
+            $caregiver->profile_photo_path = $photoPath;
         }
 
         $caregiver->save();
 
         return back()->with('success', 'Profile updated successfully!');
     }
+
+    // (Optional) If you want to keep a separate route for viewing certificate (not necessary now)
+    public function viewCertificate()
+{
+    $user = Auth::user();
+    if (!$user) {
+        abort(403, 'Unauthorized action.');
+    }
+
+    $caregiver = Caregiver::where('user_id', $user->id)->first();
+    if (!$caregiver || !$caregiver->certificate_path || !Storage::disk('public')->exists($caregiver->certificate_path)) {
+        abort(404, 'Certificate not found.');
+    }
+
+    $mime = Storage::disk('public')->mimeType($caregiver->certificate_path);
+    $content = Storage::disk('public')->get($caregiver->certificate_path);
+    $filename = 'certificate.' . pathinfo($caregiver->certificate_path, PATHINFO_EXTENSION);
+
+    return response($content, 200)
+        ->header('Content-Type', $mime)
+        ->header('Content-Disposition', 'inline; filename="' . $filename . '"');
+}
+
 }

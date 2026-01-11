@@ -3,54 +3,79 @@
 namespace App\Http\Controllers\Caregiver;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Bookings;
-
-
-use App\Models\User;
+use App\Models\Booking;
+use App\Models\Bids;
+use App\Models\ServiceRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CaregiverBookingController extends Controller
 {
-    public function index()
-{
-    $user = auth()->user();
+    public function bookings()
+    {
+        $caregiverId = Auth::id();
 
-    if (!$user || !$user->caregiver) {
-        abort(403, 'Unauthorized. You must be logged in as a caregiver.');
+        // Pending bids for this caregiver (only valid serviceRequests)
+        $pendingBids = Bids::with('serviceRequest.patient', 'serviceRequest.service')
+            ->where('caregivers_id', $caregiverId)
+            ->where('status', 'pending')
+            ->get()
+            ->filter(fn($bid) => $bid->serviceRequest !== null);
+
+        // Pending service requests not yet accepted by this caregiver
+        $pendingRequests = ServiceRequest::with('patient', 'service')
+            ->where('status', 'pending')
+            ->get();
+
+        // Merge bids and requests
+        $pendingBookings = $pendingBids->merge($pendingRequests);
+
+        // Accepted / In Progress bookings
+        $acceptedBookings = Booking::with('patient', 'service', 'serviceRequest')
+            ->where('caregivers_id', $caregiverId)
+            ->where('status', 'accepted')
+            ->get();
+
+        // Completed bookings
+        $completedBookings = Booking::with('patient', 'service', 'serviceRequest')
+            ->where('caregivers_id', $caregiverId)
+            ->where('status', 'completed')
+            ->get();
+
+        return view('caregiver.CaregiverBooking', compact(
+            'pendingBookings',
+            'acceptedBookings',
+            'completedBookings'
+        ));
     }
 
-    $caregiverId = $user->caregiver->id;
-
-    $upcomingBookings = Bookings::where('caregivers_id', $caregiverId)
-        ->whereIn('status', ['pending', 'accepted']) // include pending bookings
-        ->orderBy('date_time')
-        ->get();
-
-    $completedBookings = Bookings::where('caregivers_id', $caregiverId)
-        ->where('status', 'completed')
-        ->orderByDesc('date_time')
-        ->get();
-
-    return view('caregiver.caregiverBooking', compact('upcomingBookings', 'completedBookings'));
-}
-
-    public function markCompleted(Request $request, $bookingId)
+    // Accept a bid and create booking
+    public function acceptBid(Bids $bid)
     {
-        $user = auth()->user();
-
-        if (!$user || !$user->caregiver) {
-            abort(403, 'Unauthorized.');
+        if (!$bid->serviceRequest) {
+            return back()->with('error', 'This bid has no valid service request.');
         }
 
-        $caregiverId = $user->caregiver->id;
+        $bid->update(['status' => 'accepted']);
 
-        $booking = Bookings::where('caregivers_id', $caregiverId)
-            ->where('booking_id', $bookingId)
-            ->firstOrFail();
+        Booking::create([
+            'patients_id' => $bid->serviceRequest->patient_id,
+            'caregivers_id' => $bid->caregivers_id,
+            'services_id' => $bid->serviceRequest->service_id,
+            'status' => 'accepted',
+            'price' => $bid->proposed_price,
+            'location' => $bid->serviceRequest->location ?? 'N/A',
+            'date_time' => now(),
+            'start_date' => now(),
+            'end_date' => now()->addDay(),
+        ]);
 
-        $booking->status = 'completed';
-        $booking->save();
+        return back()->with('success', 'Bid accepted and added to your bookings.');
+    }
 
-        return redirect()->back()->with('success', 'Booking marked as completed.');
+    // Mark booking as completed
+    public function complete(Booking $booking)
+    {
+        $booking->update(['status' => 'completed']);
+        return back()->with('success', 'Booking marked as completed.');
     }
 }

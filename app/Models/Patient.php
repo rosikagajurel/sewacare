@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'user_id',
         'medical_history',
@@ -17,4 +18,6 @@ class Patient extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    
 }

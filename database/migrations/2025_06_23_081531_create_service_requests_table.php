@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->enum('status', ['pending', 'accepted', 'completed'])->default('pending');
             $table->timestamps();
+            $table->enum('shift_type', ['day', 'night'])->default('day');
             $table->foreign('patient_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
         });
